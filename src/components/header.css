@@ -1,0 +1,92 @@
+.app-header {
+  justify-content: space-between;
+  align-items: center;
+  color: #FCF6F5;
+  background-color: #2BAE66;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  border-bottom: solid 3px black;
+  padding: 0.5rem 1rem;
+}
+
+.app-header h2 {
+  color: #FCF6F5;
+  font-weight: 400;
+  margin: 6px;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  gap: 2rem;
+  text-decoration: none;
+  margin: 12px;
+  padding-top: 0; /* Removed fixed padding to align better */
+}
+
+nav a {
+  text-decoration: none;
+  color: #FCF6F5;
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: #FFFFFF;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 6px;
+}
+
+.hamburger-line {
+  width: 100%;
+  height: 3px;
+  background-color: #FCF6F5;
+  border-radius: 10px;
+}
+
+@media (max-width: 600px) {
+  .app-header {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 0.5rem;
+    position: relative;
+  }
+  
+  .menu-toggle {
+    display: flex;
+  }
+  
+  nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #2BAE66;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 1rem 0;
+    border-bottom: solid 3px black;
+    z-index: 100;
+  }
+
+  nav.open {
+    display: flex;
+  }
+}

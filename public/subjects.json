@@ -1,0 +1,57 @@
+[
+  { "id": "MAT101", "name": "Linear Algebra & Calculus" },
+  { "id": "PHT100", "name": "Engineering Physics A" },
+  { "id": "PHT110", "name": "Engineering Physics B" },
+  { "id": "CYT100", "name": "Engineering Chemistry" },
+  { "id": "EST100", "name": "Engineering Mechanics" },
+  { "id": "EST110", "name": "Engineering Graphics" },
+  { "id": "_TBD_S2_", "name": "Subject(s) per college syllabus" },
+
+  { "id": "MAT203", "name": "Discrete Mathematical Structures" },
+  { "id": "CST201", "name": "Data Structures" },
+  { "id": "CST203", "name": "Logic System Design" },
+  { "id": "CST205", "name": "Object Oriented Programming (Java)" },
+  { "id": "EST200", "name": "Design and Engineering" },
+  { "id": "MCN201", "name": "Sustainable Engineering" },
+  { "id": "MCN202", "name": "Professional Ethics" },
+  { "id": "CSL201", "name": "Data Structures Lab" },
+  { "id": "CSL203", "name": "OOP (Java) Lab" },
+
+  { "id": "MAT206", "name": "Graph Theory" },
+  { "id": "CST202", "name": "Computer Organisation & Architecture" },
+  { "id": "CST204", "name": "Database Management Systems" },
+  { "id": "CST206", "name": "Operating Systems" },
+  { "id": "CSL202", "name": "Digital / Circuits Lab" },
+  { "id": "CSL204", "name": "Operating Systems Lab" },
+
+  { "id": "CST301", "name": "Formal Languages and Automata Theory" },
+  { "id": "CST303", "name": "Computer Networks" },
+  { "id": "CST305", "name": "System Software" },
+  { "id": "CST307", "name": "Microprocessors & Microcontrollers" },
+  { "id": "CST309", "name": "Management of Software Systems" },
+  { "id": "_TBD_PE1_", "name": "Professional Elective I" },
+  { "id": "_TBD_OE1_", "name": "Open / Non‑Dept Elective I" },
+
+  { "id": "CST302", "name": "Compiler Design" },
+  { "id": "CST304", "name": "Computer Graphics & Image Processing" },
+  { "id": "CST306", "name": "Algorithm Analysis & Design" },
+  { "id": "HUT300", "name": "Industrial Economics & Foreign Trade" },
+  { "id": "_TBD_PE2_", "name": "Professional Elective II" },
+  { "id": "_TBD_LAB_PE2_", "name": "Lab / Elective Lab / Mini‑Project" },
+
+  { "id": "CST401", "name": "Computer Graphics" },
+  { "id": "CST403", "name": "Programming Paradigms" },
+  { "id": "CST405", "name": "Computer System Architecture" },
+  { "id": "CST407", "name": "Distributed Computing" },
+  { "id": "CST409", "name": "Cryptography & Network Security" },
+  { "id": "_TBD_PE3_", "name": "Professional Elective III" },
+  { "id": "CST451", "name": "Seminar / Project Preliminary" },
+  { "id": "_TBD_LAB_PE3_", "name": "Elective / Lab or Project Work" },
+
+  { "id": "CST402", "name": "Data Mining & Warehousing" },
+  { "id": "CST404", "name": "Embedded Systems" },
+  { "id": "_TBD_PE4_", "name": "Professional Elective IV" },
+  { "id": "_TBD_OE2_", "name": "Open / Non‑Departmental Elective II" },
+  { "id": "CST492", "name": "Project / Dissertation" }
+]
+
