@@ -1,8 +1,8 @@
 .app-header {
   justify-content: space-between;
   align-items: center;
-  color: #FCF6F5;
-  background-color: #2BAE66;
+  color: var(--vella);
+  background-color: var(--pacha);
 
   display: flex;
   flex-direction: row;
