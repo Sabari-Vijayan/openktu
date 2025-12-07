@@ -18,6 +18,11 @@
   margin: 6px;
 }
 
+.app-header h2 a {
+  text-decoration: none;
+  color: var(--vella);
+}
+
 nav {
   display: flex;
   flex-direction: row;

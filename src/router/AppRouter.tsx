@@ -9,7 +9,7 @@ export default function AppRouter() {
       <Route path="/" element={<HomePage />} />
       <Route path="/home" element={<HomePage />} />
       <Route path="/subject/:subjectId" element={<SubjectPage />} />
-      <Route path="/subject/:subjectId/module/:moduleId" element={<NotePage />} />
+      <Route path="/subject/:subjectId/module/:moduleId" element={<SubjectPage />} />
 
       <Route path="*" element={<div>Not Found</div>} />
     </Routes>

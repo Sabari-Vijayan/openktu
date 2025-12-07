@@ -1,6 +1,10 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import 'github-markdown-css/github-markdown.css';
 import { useSyllabus } from "../context/SyllabusContext";
+import './SubjectPage.css';
 
 interface Subject {
   id: string;
@@ -8,9 +12,10 @@ interface Subject {
 }
 
 export default function SubjectPage() {
-  const { subjectId } = useParams();
+  const { subjectId, moduleId } = useParams();
   const { year } = useSyllabus();
   const [subject, setSubject] = useState<Subject | null>(null);
+  const [markdownContent, setMarkdownContent] = useState("");
 
   useEffect(() => {
     // Find subject name from the JSON
@@ -23,6 +28,23 @@ export default function SubjectPage() {
       .catch(console.error);
   }, [subjectId, year]);
 
+  useEffect(() => {
+    // Determine which file to fetch
+    const fileName = moduleId ? `module${moduleId}.md` : `intro.md`;
+    const path = `/data/notes/${subjectId}/${fileName}`;
+
+    fetch(path)
+      .then(res => {
+        if (!res.ok) throw new Error("Content not found");
+        return res.text();
+      })
+      .then(text => setMarkdownContent(text))
+      .catch(err => {
+        console.error(err);
+        setMarkdownContent(`Error loading content: ${err.message}. \n\n (File: ${path})`);
+      });
+  }, [subjectId, moduleId]);
+
   // Assumption: Standard 5 modules for now, or check if we can list them.
   // In a real app, we'd probably want a manifest per subject.
   const modules = [1, 2, 3, 4, 5]; 
@@ -32,13 +54,25 @@ export default function SubjectPage() {
   return (
     <div className="subject-page">
       <h2>{subject.id}: {subject.name}</h2>
-      <div className="modules-list">
-        {modules.map(mod => (
-          <Link key={mod} to={`/subject/${subjectId}/module/${mod}`} className="card module-card">
-            <h3>Module {mod}</h3>
-            <p>View Notes</p>
-          </Link>
-        ))}
+      <div className="main-block">
+        <div className="modules-list">
+          {modules.map(mod => (
+            <NavLink 
+              key={mod} 
+              to={`/subject/${subjectId}/module/${mod}`} 
+              className={({ isActive }) => `card module-card${isActive ? ' active' : ''}`}
+            >
+              <h3>Module {mod}</h3>
+              <p>View Notes</p>
+            </NavLink>
+          ))}
+        </div>
+
+        <div className="main-content markdown-body">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {markdownContent}
+          </ReactMarkdown>
+        </div>
       </div>
     </div>
   );

@@ -55,3 +55,14 @@ h2 {
   align-items: center;
   text-align: center;
 }
+
+.subject-year-badge {
+  background-color: #007bff; /* Primary blue color */
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px; /* Rounded corners */
+  font-size: 0.75em; /* Smaller font size relative to parent */
+  font-weight: bold;
+  margin-left: 8px; /* Space from the subject name */
+  white-space: nowrap; /* Prevent badge from breaking into multiple lines */
+}

@@ -50,7 +50,7 @@ export default function HomePage() {
               className="card"
             >
               <h3>{sub.id}</h3>
-              <p>{sub.name}</p>
+              <p>{sub.name} <span className="subject-year-badge">{year}</span></p>
             </Link>
           ))}
           {filteredSubjects.length === 0 && (
