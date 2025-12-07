@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import SubjectPage from "../pages/SubjectPage";
-import NotePage from "../pages/NotePage";
+/*import NotePage from "../pages/NotePage";*/
 
 export default function AppRouter() {
   return (
