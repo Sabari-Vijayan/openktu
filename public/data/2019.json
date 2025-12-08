@@ -38,6 +38,7 @@
   { "id": "HUT300", "name": "Industrial Economics & Foreign Trade" },
   { "id": "_TBD_PE2_", "name": "Professional Elective II" },
   { "id": "_TBD_LAB_PE2_", "name": "Lab / Elective Lab / Mini‑Project" },
+  { "id": "CST362", "name": "Programming In Python" },
 
   { "id": "CST401", "name": "Computer Graphics" },
   { "id": "CST403", "name": "Programming Paradigms" },

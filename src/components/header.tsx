@@ -12,7 +12,6 @@ export default function Header() {
 
       <h2 className="logo"><Link to="/">openktu</Link></h2>
 
-      <div className="header-controls">
         <select 
           value={year} 
           onChange={(e) => setYear(e.target.value as '2019' | '2024')}
@@ -22,6 +21,7 @@ export default function Header() {
           <option value="2019">2019 Syllabus</option>
         </select>
 
+      <div className="header-controls">
         <button 
           className="menu-toggle" 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -34,7 +34,7 @@ export default function Header() {
       </div>
 
       <nav className={isMenuOpen ? "open" : ""}>
-        <Link to="/" onClick={() => setIsMenuOpen(false)}>about</Link>
+        <Link to="/about" onClick={() => setIsMenuOpen(false)}>about</Link>
         <Link to="/" onClick={() => setIsMenuOpen(false)}>contribute</Link>
         <Link to="/" onClick={() => setIsMenuOpen(false)}>contact</Link>
       </nav>

@@ -64,6 +64,51 @@ nav a:hover {
   border-radius: 10px;
 }
 
+.year-selector {
+  appearance: none;             /* remove default browser arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  padding: 0.6rem 2.5rem 0.6rem 1rem;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+
+  background-color: #2BAE66;    /* your brand green */
+  color: #FCF6F5;               /* soft white text */
+  border: none;
+  border-radius: 8px;
+
+  cursor: pointer;
+  outline: none;
+
+  transition: 0.2s ease-in-out;
+  position: relative;
+}
+
+/* Hover */
+.year-selector:hover {
+  background-color: #26a25d;    /* slightly darker green */
+}
+
+/* Focus (when clicked/open) */
+.year-selector:focus {
+  box-shadow: 0 0 0 3px rgba(43, 174, 102, 0.4);
+}
+
+/* Optional: white border on focus */
+.year-selector:focus-visible {
+  border: 1px solid #fff;
+}
+
+/* Add custom dropdown arrow */
+.year-selector {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23FCF6F5' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  background-size: 1rem;
+}
+
+
 @media (max-width: 600px) {
   .app-header {
     flex-direction: row;

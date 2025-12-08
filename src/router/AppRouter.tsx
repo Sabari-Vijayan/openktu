@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import SubjectPage from "../pages/SubjectPage";
+import AboutPage from "../pages/AboutPage.tsx";
 /*import NotePage from "../pages/NotePage";*/
 
 export default function AppRouter() {
@@ -10,6 +11,8 @@ export default function AppRouter() {
       <Route path="/home" element={<HomePage />} />
       <Route path="/subject/:subjectId" element={<SubjectPage />} />
       <Route path="/subject/:subjectId/module/:moduleId" element={<SubjectPage />} />
+
+      <Route path="/about" element={<AboutPage />} />
 
       <Route path="*" element={<div>Not Found</div>} />
     </Routes>

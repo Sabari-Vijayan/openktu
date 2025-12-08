@@ -16,6 +16,27 @@ export default function SubjectPage() {
   const { year } = useSyllabus();
   const [subject, setSubject] = useState<Subject | null>(null);
   const [markdownContent, setMarkdownContent] = useState("");
+  const [modules, setModules] = useState<number[]>([1, 2, 3, 4, 5]);
+
+  useEffect(() => {
+    if (!subjectId) return;
+
+    // Fetch manifest for dynamic modules
+    fetch(`/data/notes/${subjectId}/manifest.json`)
+      .then(res => {
+        if (!res.ok) throw new Error("Manifest not found");
+        return res.json();
+      })
+      .then(data => {
+        if (data.modules && Array.isArray(data.modules)) {
+          setModules(data.modules);
+        }
+      })
+      .catch(() => {
+        // Fallback or keep default
+        console.log(`No manifest found for ${subjectId}, using default modules.`);
+      });
+  }, [subjectId]);
 
   useEffect(() => {
     // Find subject name from the JSON
@@ -47,7 +68,7 @@ export default function SubjectPage() {
 
   // Assumption: Standard 5 modules for now, or check if we can list them.
   // In a real app, we'd probably want a manifest per subject.
-  const modules = [1, 2, 3, 4, 5]; 
+  // const modules = [1, 2, 3, 4, 5]; // Removed in favor of state
 
   if (!subject) return <div>Loading or Subject Not Found...</div>;
 
