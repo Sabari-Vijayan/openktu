@@ -1,73 +1,29 @@
-# React + TypeScript + Vite
+# OpenKTU
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**OpenKTU** is a free and open platform created to support engineering students under KTU with reliable learning resources — **no ads, no payments, no distractions**.
 
-Currently, two official plugins are available:
+We aim to build a **minimalist, fast, and clean** website because everyone is tired of clicking sketchy link-embedded PDFs that open random new tabs and sometimes contain incorrect notes. Students deserve better.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Why OpenKTU?
 
-## React Compiler
+- No ads  
+- No paywalls  
+- No login/signup  
+- No data collection  
+- No unnecessary backend  
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Everything is static and openly accessible because education shouldn’t require trade-offs like giving away your data or dealing with unsafe links.
 
-## Expanding the ESLint configuration
+There are powerful free tools and services available today — not using them for the benefit of the student community would be foolish. OpenKTU simply leverages these tools to deliver accurate notes quickly and safely.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Future Plans
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+We might add lightweight systems to prevent bot abuse or spam, but **your privacy will always remain untouched**.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Join the Movement
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Contribute notes, corrections, or improvements.  
+Help build a platform where knowledge is truly open, accessible, and trustworthy.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+**Knowledge should be free, open, and accessible to everyone.**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
