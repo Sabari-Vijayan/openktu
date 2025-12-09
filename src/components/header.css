@@ -10,12 +10,42 @@
 
   border-bottom: solid 3px black;
   padding: 0.5rem 1rem;
+  width: 100%;
+  gap: 1rem;
+  min-height: 60px;
+
+  z-index: 999;
+}
+
+.left-side, .right-side {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+  flex-shrink: 1;
+}
+
+.left-side {
+  flex: 0 1 auto;
+}
+
+.right-side {
+  flex: 0 1 auto;
+}
+
+.logo, nav {
+  min-width: 0;
 }
 
 .app-header h2 {
   color: #FCF6F5;
   font-weight: 400;
-  margin: 6px;
+  margin: 0;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .app-header h2 a {
@@ -28,16 +58,21 @@ nav {
   flex-direction: row;
   align-items: center;
 
-  gap: 2rem;
+
+  gap: 1.5rem;
   text-decoration: none;
-  margin: 12px;
-  padding-top: 0; /* Removed fixed padding to align better */
+  margin: 0;
+  padding: 0; /* Removed fixed padding to align better */
+  order: 3;
+  width: 100%;
 }
 
 nav a {
   text-decoration: none;
   color: #FCF6F5;
   transition: color 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 nav a:hover {
@@ -55,6 +90,7 @@ nav a:hover {
   cursor: pointer;
   padding: 0;
   margin-right: 6px;
+  flex-shrink: 0;
 }
 
 .hamburger-line {
@@ -83,6 +119,9 @@ nav a:hover {
 
   transition: 0.2s ease-in-out;
   position: relative;
+
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 /* Hover */
@@ -113,14 +152,28 @@ nav a:hover {
   .app-header {
     flex-direction: row;
     justify-content: space-between;
-    padding-bottom: 0.5rem;
+    padding: 0.5rem 1rem;
     position: relative;
+    flex-wrap: nowrap;
   }
   
   .menu-toggle {
     display: flex;
   }
   
+   .left-side {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .right-side {
+    flex: 0 0 auto;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
   nav {
     display: none;
     position: absolute;
@@ -134,9 +187,26 @@ nav a:hover {
     padding: 1rem 0;
     border-bottom: solid 3px black;
     z-index: 100;
+    order: unset;
+    gap: 1rem;
+  }
+
+  nav a {
+    padding: 0.5rem 1rem;
+    width: 100%;
   }
 
   nav.open {
     display: flex;
+  }
+
+  .app-header h2 {
+    min-width: 0;
+    flex-shrink: 1;
+  }
+
+  .year-selector {
+    font-size: 0.85rem;
+    padding: 0.5rem 2rem 0.5rem 0.8rem;
   }
 }

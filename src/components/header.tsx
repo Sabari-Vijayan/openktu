@@ -10,18 +10,9 @@ export default function Header() {
   return(
   <header className="app-header">
 
-      <h2 className="logo"><Link to="/">openktu</Link></h2>
+      <div className="left-side">
 
-        <select 
-          value={year} 
-          onChange={(e) => setYear(e.target.value as '2019' | '2024')}
-          className="year-selector"
-        >
-          <option value="2024">2024 Syllabus</option>
-          <option value="2019">2019 Syllabus</option>
-        </select>
-
-      <div className="header-controls">
+       <div className="header-controls">
         <button 
           className="menu-toggle" 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -31,6 +22,21 @@ export default function Header() {
           <span className="hamburger-line"></span>
           <span className="hamburger-line"></span>
         </button>
+      </div>
+
+      <h2 className="logo"><Link to="/">openktu</Link></h2>
+
+      </div>
+
+      <div className="right-side">
+        <select 
+          value={year} 
+          onChange={(e) => setYear(e.target.value as '2019' | '2024')}
+          className="year-selector"
+        >
+          <option value="2024">2024 Syllabus</option>
+          <option value="2019">2019 Syllabus</option>
+        </select>
       </div>
 
       <nav className={isMenuOpen ? "open" : ""}>
