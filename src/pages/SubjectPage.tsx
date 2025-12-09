@@ -22,8 +22,15 @@ export default function SubjectPage() {
   const { year } = useSyllabus();
   const [subject, setSubject] = useState<Subject | null>(null);
   const [markdownContent, setMarkdownContent] = useState("");
-  
-  const generateDefaultModules = (): ModuleItem[] => [1, 2, 3, 4, 5].map(i => ({
+  const [hasIntro, setHasIntro] = useState(true);
+
+  const generateDefaultModules = (): ModuleItem[] => [
+    1,
+    2,
+    3,
+    4,
+    5
+  ].map(i => ({
     id: i.toString(),
     name: `Module ${i}`,
     fileName: `module${i}.md`
@@ -41,8 +48,14 @@ export default function SubjectPage() {
         return res.json();
       })
       .then(data => {
+        if (typeof data.hasIntro === 'boolean') {
+          setHasIntro(data.hasIntro);
+        }
+
+        let newModules: ModuleItem[] = [];
+
         if (data.modules && Array.isArray(data.modules)) {
-          const newModules: ModuleItem[] = data.modules.map((m: any) => {
+          newModules = data.modules.map((m: any) => {
             // Handle legacy/simple format (numbers or strings)
             if (typeof m === "number" || typeof m === "string") {
               return {
@@ -58,6 +71,18 @@ export default function SubjectPage() {
               fileName: m.file
             };
           });
+        }
+        
+        if (data.otherNotes && Array.isArray(data.otherNotes)) {
+             const noteModules = data.otherNotes.map((note: string) => ({
+                 id: note,
+                 name: note.replace('.md', ''),
+                 fileName: note
+             }));
+             newModules = [...newModules, ...noteModules];
+        }
+
+        if (newModules.length > 0) {
           setModules(newModules);
         }
       })
@@ -91,8 +116,10 @@ export default function SubjectPage() {
         // Fallback if module is not in the list (e.g., direct link before manifest loads)
         fileName = `module${moduleId}.md`;
       }
+    } else if (!hasIntro && modules.length > 0) {
+       fileName = modules[0].fileName;
     }
-    
+
     const path = `/data/notes/${subjectId}/${fileName}`;
 
     fetch(path)
@@ -105,7 +132,7 @@ export default function SubjectPage() {
         console.error(err);
         setMarkdownContent(`Error loading content: ${err.message}. \n\n (File: ${path})`);
       });
-  }, [subjectId, moduleId, modules]);
+  }, [subjectId, moduleId, modules, hasIntro]);
 
   if (!subject) return <div>Loading or Subject Not Found...</div>;
 
