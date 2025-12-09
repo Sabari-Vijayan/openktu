@@ -1,14 +1,20 @@
 import { useParams, NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import 'github-markdown-css/github-markdown.css';
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import "github-markdown-css/github-markdown.css";
 import { useSyllabus } from "../context/SyllabusContext";
-import './SubjectPage.css';
+import "./SubjectPage.css";
 
 interface Subject {
   id: string;
   name: string;
+}
+
+interface ModuleItem {
+  id: string;
+  name: string;
+  fileName: string;
 }
 
 export default function SubjectPage() {
@@ -16,7 +22,14 @@ export default function SubjectPage() {
   const { year } = useSyllabus();
   const [subject, setSubject] = useState<Subject | null>(null);
   const [markdownContent, setMarkdownContent] = useState("");
-  const [modules, setModules] = useState<number[]>([1, 2, 3, 4, 5]);
+  
+  const generateDefaultModules = (): ModuleItem[] => [1, 2, 3, 4, 5].map(i => ({
+    id: i.toString(),
+    name: `Module ${i}`,
+    fileName: `module${i}.md`
+  }));
+
+  const [modules, setModules] = useState<ModuleItem[]>(generateDefaultModules);
 
   useEffect(() => {
     if (!subjectId) return;
@@ -29,12 +42,29 @@ export default function SubjectPage() {
       })
       .then(data => {
         if (data.modules && Array.isArray(data.modules)) {
-          setModules(data.modules);
+          const newModules: ModuleItem[] = data.modules.map((m: any) => {
+            // Handle legacy/simple format (numbers or strings)
+            if (typeof m === "number" || typeof m === "string") {
+              return {
+                id: m.toString(),
+                name: `Module ${m}`,
+                fileName: `module${m}.md`
+              };
+            }
+            // Handle new object format
+            return {
+              id: (m.id || m.file).toString(),
+              name: m.name || m.file,
+              fileName: m.file
+            };
+          });
+          setModules(newModules);
         }
       })
       .catch(() => {
-        // Fallback or keep default
+        // Fallback to defaults if manifest is missing (important when switching subjects)
         console.log(`No manifest found for ${subjectId}, using default modules.`);
+        setModules(generateDefaultModules());
       });
   }, [subjectId]);
 
@@ -51,7 +81,18 @@ export default function SubjectPage() {
 
   useEffect(() => {
     // Determine which file to fetch
-    const fileName = moduleId ? `module${moduleId}.md` : `intro.md`;
+    let fileName = "intro.md";
+
+    if (moduleId) {
+      const activeModule = modules.find(m => m.id === moduleId);
+      if (activeModule) {
+        fileName = activeModule.fileName;
+      } else {
+        // Fallback if module is not in the list (e.g., direct link before manifest loads)
+        fileName = `module${moduleId}.md`;
+      }
+    }
+    
     const path = `/data/notes/${subjectId}/${fileName}`;
 
     fetch(path)
@@ -64,11 +105,7 @@ export default function SubjectPage() {
         console.error(err);
         setMarkdownContent(`Error loading content: ${err.message}. \n\n (File: ${path})`);
       });
-  }, [subjectId, moduleId]);
-
-  // Assumption: Standard 5 modules for now, or check if we can list them.
-  // In a real app, we'd probably want a manifest per subject.
-  // const modules = [1, 2, 3, 4, 5]; // Removed in favor of state
+  }, [subjectId, moduleId, modules]);
 
   if (!subject) return <div>Loading or Subject Not Found...</div>;
 
@@ -78,12 +115,12 @@ export default function SubjectPage() {
       <div className="main-block">
         <div className="modules-list">
           {modules.map(mod => (
-            <NavLink 
-              key={mod} 
-              to={`/subject/${subjectId}/module/${mod}`} 
-              className={({ isActive }) => `card module-card${isActive ? ' active' : ''}`}
+            <NavLink
+              key={mod.id}
+              to={`/subject/${subjectId}/module/${mod.id}`}
+              className={({ isActive }) => `card module-card${isActive ? " active" : ""}`}
             >
-              <h3>Module {mod}</h3>
+              <h3>{mod.name}</h3>
               <p>View Notes</p>
             </NavLink>
           ))}

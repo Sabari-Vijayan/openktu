@@ -63,8 +63,9 @@ nav {
   text-decoration: none;
   margin: 0;
   padding: 0; /* Removed fixed padding to align better */
-  order: 3;
-  width: 100%;
+  flex: 1;
+  justify-content: flex-end;
+  min-width: 0;
 }
 
 nav a {
@@ -187,8 +188,9 @@ nav a:hover {
     padding: 1rem 0;
     border-bottom: solid 3px black;
     z-index: 100;
-    order: unset;
     gap: 1rem;
+    flex: unset;
+    justify-content: unset;
   }
 
   nav a {
