@@ -1,4 +1,3 @@
-import React from 'react';
 import './ContributePage.css';
 
 export default function ContributePage() {
