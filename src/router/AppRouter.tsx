@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import SubjectPage from "../pages/SubjectPage";
 import AboutPage from "../pages/AboutPage.tsx";
-/*import NotePage from "../pages/NotePage";*/
+import ContributePage from "../pages/ContributePage.tsx";
 
 export default function AppRouter() {
   return (
@@ -13,6 +13,7 @@ export default function AppRouter() {
       <Route path="/subject/:subjectId/module/:moduleId" element={<SubjectPage />} />
 
       <Route path="/about" element={<AboutPage />} />
+      <Route path="/contribute" element={<ContributePage />} />
 
       <Route path="*" element={<div>Not Found</div>} />
     </Routes>

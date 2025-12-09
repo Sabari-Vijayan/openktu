@@ -309,6 +309,7 @@
     margin: 1rem auto;
     padding: 0.5rem 1rem;
     font-size: 0.95rem;
+    max-width: 100%;
   }
 
   .markdown-body h1 {

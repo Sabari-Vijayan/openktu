@@ -1,29 +1,78 @@
 # OpenKTU
 
-**OpenKTU** is a free and open platform created to support engineering students under KTU with reliable learning resources — **no ads, no payments, no distractions**.
+**OpenKTU** is a free, open-source platform dedicated to providing KTU engineering students with reliable, high-quality learning resources.
+**No ads. No paywalls. No distractions.**
 
-We aim to build a **minimalist, fast, and clean** website because everyone is tired of clicking sketchy link-embedded PDFs that open random new tabs and sometimes contain incorrect notes. Students deserve better.
+We believe education is a right, not a commodity. Students shouldn't have to navigate sketchy links, intrusive ads, or paywalls just to access study materials. OpenKTU is built to be **minimalist, fast, and privacy-focused**.
 
 ## Why OpenKTU?
 
-- No ads  
-- No paywalls  
-- No login/signup  
-- No data collection  
-- No unnecessary backend  
+- **Zero Ads & Paywalls:** Education should be free.
+- **Privacy First:** No login required, no data collection.
+- **Community Driven:** Powered by volunteers and students like you.
+- **Open Source:** Transparent and improvable by anyone.
 
-Everything is static and openly accessible because education shouldn’t require trade-offs like giving away your data or dealing with unsafe links.
+## 🤝 How to Contribute
 
-There are powerful free tools and services available today — not using them for the benefit of the student community would be foolish. OpenKTU simply leverages these tools to deliver accurate notes quickly and safely.
+This project survives and thrives on community contributions. Whether you have notes to share, corrections to make, or coding skills to offer, your help is invaluable.
 
-## Future Plans
+### 1. Contributing Notes
+This is the most direct way to help. We need concise, accurate notes in Markdown format.
 
-We might add lightweight systems to prevent bot abuse or spam, but **your privacy will always remain untouched**.
+1.  **Format:** Notes are written in Markdown (`.md`). You can use LLMs to convert your raw text notes into clean Markdown.
+2.  **Location:** All notes are stored in the `public/notes` directory.
+    *   Each module or program should be a separate file.
+    *   Organize them by subject code/name folders.
+3.  **Manifest:** Ensure the subject is listed in `public/data/subjects.json` (or the respective year json) so it appears on the site.
+4.  **Submission:** Submit a Pull Request (PR) with your new files.
 
-## Join the Movement
+### 2. Updating & Fixing Errors
+Found a typo, incorrect formula, or broken link?
+*   Navigate to the specific file in `public/notes`.
+*   Make the correction and submit a PR.
+*   For major changes, please **raise an issue** first to discuss.
 
-Contribute notes, corrections, or improvements.  
-Help build a platform where knowledge is truly open, accessible, and trustworthy.
+### 3. Website Development
+OpenKTU is a React-based application. If you are a developer, you can help improve the site's structure, performance, or design.
+
+#### Tech Stack
+*   **Framework:** React + Vite
+*   **Routing:** React Router
+*   **Styling:** CSS
+*   **Deployment:** GitHub Pages
+
+## 🛠️ Local Development Setup
+
+To run the project locally on your machine:
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/Sabari-Vijayan/openktu.git
+    cd openktu
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Start the development server:**
+    ```bash
+    npm run dev
+    ```
+
+4.  **Build for production:**
+    ```bash
+    npm run build
+    ```
+
+## 📂 Project Structure
+
+*   `public/data/`: Contains JSON configuration for subjects and years.
+*   `public/notes/`: The core content! Markdown files for all subjects.
+*   `src/`: React source code.
+
+## Philosophy
 
 **Knowledge should be free, open, and accessible to everyone.**
-
+This project is open source. Feel free to use, reuse, and redistribute.

@@ -42,7 +42,7 @@ export default function SubjectPage() {
     if (!subjectId) return;
 
     // Fetch manifest for dynamic modules
-    fetch(`/data/notes/${subjectId}/manifest.json`)
+    fetch(`/data/notes/${subjectId.toUpperCase()}/manifest.json`)
       .then(res => {
         if (!res.ok) throw new Error("Manifest not found");
         return res.json();
@@ -120,7 +120,7 @@ export default function SubjectPage() {
        fileName = modules[0].fileName;
     }
 
-    const path = `/data/notes/${subjectId}/${fileName}`;
+    if (!subjectId) return; const path = `/data/notes/${subjectId.toUpperCase()}/${fileName}`;
 
     fetch(path)
       .then(res => {

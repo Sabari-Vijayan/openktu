@@ -41,7 +41,7 @@ export default function Header() {
 
       <nav className={isMenuOpen ? "open" : ""}>
         <Link to="/about" onClick={() => setIsMenuOpen(false)}>about</Link>
-        <Link to="/" onClick={() => setIsMenuOpen(false)}>contribute</Link>
+        <Link to="/contribute" onClick={() => setIsMenuOpen(false)}>contribute</Link>
         <Link to="/" onClick={() => setIsMenuOpen(false)}>contact</Link>
       </nav>
 
