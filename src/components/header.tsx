@@ -1,30 +1,34 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import './header.css';
 import { useSyllabus } from "../context/SyllabusContext";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { year, setYear } = useSyllabus();
+  const location = useLocation();
+
+  // Determine if on a subject page
+  const isSubjectPage = location.pathname.startsWith('/subject/');
 
   return(
-  <header className="app-header">
+    <header className="app-header">
 
       <div className="left-side">
 
-       <div className="header-controls">
-        <button 
-          className="menu-toggle" 
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle navigation"
-        >
-          <span className="hamburger-line"></span>
-          <span className="hamburger-line"></span>
-          <span className="hamburger-line"></span>
-        </button>
-      </div>
+        <div className="header-controls">
+          <button 
+            className="menu-toggle" 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle navigation"
+          >
+            <span className="hamburger-line"></span>
+            <span className="hamburger-line"></span>
+            <span className="hamburger-line"></span>
+          </button>
+        </div>
 
-      <h2 className="logo"><Link to="/">openktu</Link></h2>
+        <h2 className="logo"><Link to="/">openktu</Link></h2>
 
       </div>
 
@@ -33,6 +37,7 @@ export default function Header() {
           value={year} 
           onChange={(e) => setYear(e.target.value as '2019' | '2024')}
           className="year-selector"
+          disabled={isSubjectPage} // Disable if on subject page
         >
           <option value="2024">2024 Syllabus</option>
           <option value="2019">2019 Syllabus</option>
@@ -45,7 +50,7 @@ export default function Header() {
         <Link to="/" onClick={() => setIsMenuOpen(false)}>contact</Link>
       </nav>
 
-  </header>
+    </header>
   )
-
 }
+
