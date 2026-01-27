@@ -1,0 +1,26 @@
+version: "3"
+services:
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: wiki
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_USER: wikijs
+    volumes:
+      - db-data:/var/lib/postgresql/data
+  wiki:
+    image: ghcr.io/requarks/wiki:2
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    environment:
+      DB_TYPE: postgres
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: wikijs
+      DB_PASS: ${DB_PASS}
+      DB_NAME: wiki
+
+volumes:
+  db-data:
